@@ -19,4 +19,5 @@ size = Vector3( 1.005, 1.005, 1.005 )
 script = ExtResource( 1 )
 
 [node name="PreviewBlock" type="MeshInstance" parent="."]
+visible = false
 mesh = SubResource( 2 )

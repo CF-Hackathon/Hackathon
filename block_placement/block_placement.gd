@@ -38,6 +38,7 @@ func _unhandled_input(event):
 
 func _on_touch_released():
 	if not preview_block.visible: return
+	if not is_instance_valid(gridmap): return
 	if mode == Mode.PLACE:
 		gridmap.set_cell_item(gridmap_position.x, gridmap_position.y, gridmap_position.z, 0)
 	elif mode == Mode.DELETE:
