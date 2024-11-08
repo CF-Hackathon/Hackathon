@@ -31,5 +31,4 @@ func process_drag(event, radius):
 	stick.rect_position = diff*3.0
 	input = diff/radius
 	input.y *= -1
-	print(input)
 	

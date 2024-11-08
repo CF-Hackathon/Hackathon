@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/mesh_lib_01.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://grid_map/grid_map.gd" type="Script" id=2]
-[ext_resource path="res://ui/ui.tscn" type="PackedScene" id=3]
+[ext_resource path="res://block_placement/block_placement.tscn" type="PackedScene" id=3]
 [ext_resource path="res://controller/player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/ui.tscn" type="PackedScene" id=5]
+[ext_resource path="res://controller/editor/editor.tscn" type="PackedScene" id=6]
 
 [node name="MainScene" type="Spatial"]
 
@@ -18,4 +20,9 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23118, 0 )
 
-[node name="UI" parent="." instance=ExtResource( 3 )]
+[node name="Editor" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 0.907484, 0.420086, 0, -0.420086, 0.907484, 0, 8.32128, 5.36316 )
+
+[node name="BlockPlacement" parent="." instance=ExtResource( 3 )]
+
+[node name="UI" parent="." instance=ExtResource( 5 )]

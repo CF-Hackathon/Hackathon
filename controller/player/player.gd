@@ -10,7 +10,13 @@ var movement_speed: float = 5.0
 var jump_height: float = 7.0
 var sensitivity: float = 2.0
 
+
+func _ready():
+	ControllerManager.player = self
+	
+
 func _physics_process(delta):
+	if not ControllerManager.mode == ControllerManager.Mode.PLAYER: return
 	# process movement
 	var movement_input: Vector2 = ControllerManager.movement_joystick.input
 	var y_velocity: float = velocity.y - gravity*delta
@@ -25,4 +31,8 @@ func _physics_process(delta):
 	camera.rotation.x += camera_input.y * sensitivity * delta
 	camera.rotation.x = clamp(camera.rotation.x, -PI/2.0, PI/2.0)
 	rotation.y -= camera_input.x * sensitivity * delta
-	
+
+
+func toggle(toggled: bool):
+	visible = toggled
+	camera.current = toggled
