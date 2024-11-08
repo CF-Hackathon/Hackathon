@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://ui/block_list/block_list_panel.gd"
 }, {
 "base": "Spatial",
+"class": "BlockPlacement",
+"language": "GDScript",
+"path": "res://block_placement/block_placement.gd"
+}, {
+"base": "Spatial",
 "class": "Editor",
 "language": "GDScript",
 "path": "res://controller/editor/editor.gd"
@@ -31,6 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BlockListPanel": "",
+"BlockPlacement": "",
 "Editor": "",
 "Joystick": "",
 "Player": ""
