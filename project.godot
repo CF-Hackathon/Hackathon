@@ -8,10 +8,30 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "Joystick",
+"language": "GDScript",
+"path": "res://controller/joystick/joystick.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://controller/player/player.gd"
+} ]
+_global_script_class_icons={
+"Joystick": "",
+"Player": ""
+}
+
 [application]
 
 config/name="cftonhackathon"
 config/icon="res://icon.png"
+
+[autoload]
+
+ControllerManager="*res://controller/controller_manager.gd"
 
 [gui]
 

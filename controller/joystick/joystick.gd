@@ -1,3 +1,4 @@
+class_name Joystick
 extends Control
 
 
@@ -17,6 +18,7 @@ func _unhandled_input(event):
 		elif not event.pressed and touch_index == event.index:
 			touch_index = -1
 			stick.rect_position = Vector2()
+			input = Vector2()
 	elif event is InputEventScreenDrag:
 		if touch_index == event.index:
 			process_drag(event, radius)
@@ -25,7 +27,9 @@ func _unhandled_input(event):
 
 func process_drag(event, radius):
 	var stick_position: Vector2 = event.position
-	var diff: Vector2 = event.position - rect_global_position
-	stick.rect_position = diff.clamped(radius)
+	var diff: Vector2 = (event.position - rect_global_position).clamped(radius)
+	stick.rect_position = diff*3.0
 	input = diff/radius
+	input.y *= -1
+	print(input)
 	
