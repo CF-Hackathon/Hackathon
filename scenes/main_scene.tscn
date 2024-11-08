@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/mesh_lib_01.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://grid_map/grid_map.gd" type="Script" id=2]
 [ext_resource path="res://ui/ui.tscn" type="PackedScene" id=3]
+[ext_resource path="res://controller/player/player.tscn" type="PackedScene" id=4]
 
 [node name="MainScene" type="Spatial"]
 
@@ -14,7 +15,7 @@ __meta__ = {
 "_editor_clip_": 0
 }
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.566406, -0.466249, 0.679555, 0, 0.824577, 0.56575, -0.824126, 0.320444, -0.467046, 63.2064, 40.3087, -43.3699 )
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23118, 0 )
 
 [node name="UI" parent="." instance=ExtResource( 3 )]
