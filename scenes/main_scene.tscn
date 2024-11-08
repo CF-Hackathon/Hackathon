@@ -1,12 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/mesh_lib_01.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://grid_map/grid_map.gd" type="Script" id=2]
 
 [node name="MainScene" type="Spatial"]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 1, 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_editor_clip_": 0
 }
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.566406, -0.466249, 0.679555, 0, 0.824577, 0.56575, -0.824126, 0.320444, -0.467046, 63.2064, 40.3087, -43.3699 )
