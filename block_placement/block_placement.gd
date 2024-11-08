@@ -8,6 +8,7 @@ enum Mode {
 
 onready var preview_block: MeshInstance = $PreviewBlock
 
+var selected_block_id: int = 0
 var mode: int = Mode.PLACE
 var gridmap_position: Vector3 = Vector3()
 var gridmap: GridMap
@@ -40,7 +41,7 @@ func _on_touch_released():
 	if not preview_block.visible: return
 	if not is_instance_valid(gridmap): return
 	if mode == Mode.PLACE:
-		gridmap.set_cell_item(gridmap_position.x, gridmap_position.y, gridmap_position.z, 0)
+		gridmap.set_cell_item(gridmap_position.x, gridmap_position.y, gridmap_position.z, selected_block_id)
 	elif mode == Mode.DELETE:
 		gridmap.set_cell_item(gridmap_position.x, gridmap_position.y, gridmap_position.z, -1)
 

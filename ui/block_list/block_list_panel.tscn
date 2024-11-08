@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/block_list/block_list_panel.gd" type="Script" id=1]
+[ext_resource path="res://assets/mesh_lib_01.meshlib" type="MeshLibrary" id=2]
+
+[node name="BlockListPanel" type="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -180.0
+script = ExtResource( 1 )
+mesh_library = ExtResource( 2 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer"]
+margin_right = 164.0
+margin_bottom = 584.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

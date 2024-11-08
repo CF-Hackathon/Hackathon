@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Panel",
+"class": "BlockListPanel",
+"language": "GDScript",
+"path": "res://ui/block_list/block_list_panel.gd"
+}, {
 "base": "Spatial",
 "class": "Editor",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://controller/player/player.gd"
 } ]
 _global_script_class_icons={
+"BlockListPanel": "",
 "Editor": "",
 "Joystick": "",
 "Player": ""
