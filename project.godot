@@ -45,6 +45,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ControllerManager="*res://controller/controller_manager.gd"
+JsTelegram="*res://js_telegram/js_telegram.gd"
 
 [gui]
 
