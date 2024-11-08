@@ -30,6 +30,21 @@ func save_world(world_name: String = "My World"):
 	file.store_string(json_save_data)
 	file.close()
 
+func new_world(world_name: String = "My World"):
+	var save_data: Array = []
+	var used_cells: Array = []
+	for x in 10:
+		for z in 10:
+			var data: Dictionary = {"cell_id": 0, "cell_position": Vector3(x-5,-2,z-5)}
+			save_data.append(data)
+	
+	var json_save_data = JSON.print(save_data)
+	
+	var file = File.new()
+	file.open(save_path, File.WRITE)
+	file.store_string(json_save_data)
+	file.close()
+
 	
 	print(save_data)
 	
@@ -45,6 +60,12 @@ func load_world_data() -> Array:
 
 func load_world():
 	self.clear()
+	var file = File.new()
+	print("a")
+	if not file.file_exists(save_path):
+		print("b")
+		new_world()
+	print("c")
 	var world_data = load_world_data()
 	generate_world(world_data)
 
