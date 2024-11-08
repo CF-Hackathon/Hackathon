@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/mesh_lib_01.meshlib" type="MeshLibrary" id=1]
+
+[node name="MainScene" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+__meta__ = {
+"_editor_clip_": 0
+}
