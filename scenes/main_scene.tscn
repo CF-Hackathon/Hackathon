@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/mesh_lib_01.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://assets/mesh_lib_02.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://grid_map/grid_map.gd" type="Script" id=2]
 [ext_resource path="res://block_placement/block_placement.tscn" type="PackedScene" id=3]
 [ext_resource path="res://controller/player/player.tscn" type="PackedScene" id=4]
@@ -12,6 +12,9 @@
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 1 )
 cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 65527, 65524, 0, 65521, 65525, 0, 65534, 65525, 0, 65529, 65527, 0, 65528, 65529, 5 )
+}
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_clip_": 0
