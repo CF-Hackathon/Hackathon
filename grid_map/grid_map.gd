@@ -33,9 +33,10 @@ func save_world(world_name: String = "My World"):
 func new_world(world_name: String = "My World"):
 	var save_data: Array = []
 	var used_cells: Array = []
-	for x in 10:
-		for z in 10:
-			var data: Dictionary = {"cell_id": 0, "cell_position": Vector3(x-5,-2,z-5)}
+	var grid_size = Vector2(100, 100)
+	for x in grid_size.x:
+		for z in grid_size.y:
+			var data: Dictionary = {"cell_id": 0, "cell_position": Vector3(x/2,-2,z/2)}
 			save_data.append(data)
 	
 	var json_save_data = JSON.print(save_data)
