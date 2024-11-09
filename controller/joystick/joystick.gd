@@ -8,10 +8,12 @@ onready var stick: Control = $Border/Control/Stick
 var input: Vector2
 var touch_index: int = -1
 
+
+
 func _unhandled_input(event):
 	var radius = (border.rect_size.x*rect_scale.x)/2.0
 	if event is InputEventScreenTouch:
-		var inside: bool = get_global_mouse_position().distance_to(rect_global_position) < radius
+		var inside: bool = event.position.distance_to(rect_global_position) < radius
 		if not event.pressed:
 			if touch_index == event.index:
 				touch_index = -1
@@ -21,6 +23,7 @@ func _unhandled_input(event):
 			touch_index = event.index
 			process_drag(event, radius)
 	elif event is InputEventScreenDrag:
+		#print("ee",touch_index,event.index)
 		if touch_index == event.index:
 			process_drag(event, radius)
 
