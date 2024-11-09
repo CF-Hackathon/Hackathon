@@ -46,3 +46,8 @@ func _on_mode_updated():
 	elif mode == Mode.EDITOR:
 		player.toggle(false)
 		editor.toggle(true)
+
+
+func update_ownership(owner_id):
+	ControllerManager.ui.display_ui(owner_id)
+	ControllerManager.block_placement.disabled = owner_id != JsTelegram.user_id

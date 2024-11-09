@@ -104,7 +104,6 @@ margin_right = 1024.0
 margin_bottom = 570.0
 
 [node name="WorldBrowser" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 visible = false

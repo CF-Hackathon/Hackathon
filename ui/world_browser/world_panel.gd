@@ -40,3 +40,5 @@ func join_world():
 	yield(WebManager.download_file(world_object, "user://"+file), "completed")
 	print("DOWNLOADED")
 	get_tree().current_scene.get_node("GridMap").load_world_file("user://"+file)
+	var w: WindowDialog = ControllerManager.ui.world_browser
+	w.hide()

@@ -81,11 +81,13 @@ func load_world_data() -> Array:
 func load_world():
 	self.clear()
 	var file = File.new()
-	print("a")
 	if not file.file_exists(save_path):
-		print("b")
 		new_world()
-	print("c")
+	if is_instance_valid(ControllerManager.ui):
+		if save_path.get_file().split("_").size() == 2:
+			ControllerManager.update_ownership(save_path.get_file().split("_")[0])
+		else:
+			ControllerManager.update_ownership(JsTelegram.user_id)
 	var world_data = load_world_data()
 	generate_world(world_data)
 

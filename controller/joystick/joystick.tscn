@@ -5,6 +5,7 @@
 [ext_resource path="res://controller/joystick/joystick.gd" type="Script" id=3]
 
 [node name="Joystick" type="Control"]
+pause_mode = 2
 mouse_filter = 2
 script = ExtResource( 3 )
 

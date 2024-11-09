@@ -13,6 +13,7 @@ var selected_block_id: int = 0
 var mode: int = Mode.PLACE
 var gridmap_position: Vector3 = Vector3()
 var gridmap: GridMap
+var disabled: bool = false
 
 func _ready():
 	ControllerManager.block_placement = self
@@ -28,6 +29,7 @@ func set_mode(new_mode: int):
 
 
 func _unhandled_input(event):
+	if disabled: return
 	if event is InputEventScreenDrag:
 		process_drag(event)
 	elif event is InputEventScreenTouch:
@@ -39,6 +41,7 @@ func _unhandled_input(event):
 
 
 func _on_touch_released():
+	if disabled: return
 	if not preview_block.visible: return
 	if not is_instance_valid(gridmap): return
 	if mode == Mode.PLACE:
