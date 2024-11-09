@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ui/block_list/block_list_panel.gd" type="Script" id=1]
-[ext_resource path="res://assets/mesh_lib_01.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://assets/mesh_lib_02.meshlib" type="MeshLibrary" id=2]
 
 [sub_resource type="ButtonGroup" id=1]
 
