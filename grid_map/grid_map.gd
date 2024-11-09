@@ -1,21 +1,35 @@
 extends GridMap
 
-var save_path: String = "user://world_data.json"
+const SAVE_PATH: String = "user://localworld.json"
+var path_to_load: String = SAVE_PATH
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
+	get_tree().paused = true
 	ControllerManager.gridmap = self
 	#save_world()
 	load_world()
-	pass # Replace with function body.
+	JsTelegram.user_id = "5845392547182"
+	if JsTelegram.user_id != "":
+		var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
+		var found_world = false
+		for world in worlds:
+			var file = world.get_file()
+			if file.split("_")[0] == JsTelegram.user_id:
+				yield(WebManager.download_file(world, SAVE_PATH), "completed")
+				load_world_file(SAVE_PATH)
+				break
+		if not found_world:
+			var file := File.new()
+			if file.file_exists(SAVE_PATH):
+				load_world_file(SAVE_PATH)
+			else:
+				new_world()
+	get_tree().paused = false
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func save_world_data(world_name: String = "My World"):
-	print("saving")
 	var save_data: Array = []
 	var used_cells: Array = []
 	used_cells = self.get_used_cells()
@@ -28,13 +42,13 @@ func save_world_data(world_name: String = "My World"):
 	var json_save_data = JSON.print(save_data)
 	
 	var file = File.new()
-	file.open(save_path, File.WRITE)
+	file.open(SAVE_PATH, File.WRITE)
 	file.store_string(json_save_data)
 	
 	file.close()
 	
 	#var file = File.new()
-	file.open(save_path, File.READ)
+	file.open(SAVE_PATH, File.READ)
 	var content = file.get_as_text()
 	var file_len = file.get_len()
 	var buffer = file.get_buffer(file_len)
@@ -47,16 +61,16 @@ func save_world_data(world_name: String = "My World"):
 func new_world(world_name: String = "My World"):
 	var save_data: Array = []
 	var used_cells: Array = []
-	var grid_size = Vector2(100, 100)
+	var grid_size = Vector2(20, 20)
 	for x in grid_size.x:
 		for z in grid_size.y:
-			var data: Dictionary = {"cell_id": 0, "cell_position": Vector3(x/2,-2,z/2)}
+			var data: Dictionary = {"cell_id": 0, "cell_position": Vector3(x-grid_size.x/2,-2,z-grid_size.y/2)}
 			save_data.append(data)
 	
 	var json_save_data = JSON.print(save_data)
 	
 	var file = File.new()
-	file.open(save_path, File.WRITE)
+	file.open(SAVE_PATH, File.WRITE)
 	file.store_string(json_save_data)
 	file.close()
 
@@ -67,7 +81,7 @@ func new_world(world_name: String = "My World"):
 
 func load_world_data() -> Array:
 	var file = File.new()
-	file.open(save_path, File.READ)
+	file.open(path_to_load, File.READ)
 	var content = file.get_as_text()
 	#var file_len = file.get_len()
 	#var buffer = file.get_buffer(file_len)
@@ -81,11 +95,11 @@ func load_world_data() -> Array:
 func load_world():
 	self.clear()
 	var file = File.new()
-	if not file.file_exists(save_path):
+	if not file.file_exists(path_to_load):
 		new_world()
 	if is_instance_valid(ControllerManager.ui):
-		if save_path.get_file().split("_").size() == 2:
-			ControllerManager.update_ownership(save_path.get_file().split("_")[0])
+		if path_to_load.get_file().split("_").size() == 2:
+			ControllerManager.update_ownership(path_to_load.get_file().split("_")[0])
 		else:
 			ControllerManager.update_ownership(JsTelegram.user_id)
 	var world_data = load_world_data()
@@ -93,7 +107,7 @@ func load_world():
 
 
 func load_world_file(file_path: String):
-	save_path = file_path
+	path_to_load = file_path
 	load_world()
 
 
