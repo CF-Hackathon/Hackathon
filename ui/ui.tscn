@@ -46,6 +46,13 @@ margin_bottom = 42.0
 size_flags_vertical = 4
 text = "Edit World"
 
+[node name="VersionLabel" type="Label" parent="VBoxContainer/HeaderPanel/HBoxContainer"]
+margin_left = 318.0
+margin_top = 25.0
+margin_right = 394.0
+margin_bottom = 39.0
+text = "Version: 0.1"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 64.0
 margin_right = 1024.0
