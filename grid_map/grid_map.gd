@@ -75,6 +75,12 @@ func load_world():
 	var world_data = load_world_data()
 	generate_world(world_data)
 
+
+func load_world_file(file_path: String):
+	save_path = file_path
+	load_world()
+
+
 func generate_world(data: Array):
 	for cell_data in data:
 		var cell_position = cell_data["cell_position"].split(",")

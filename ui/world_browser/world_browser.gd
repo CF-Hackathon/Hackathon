@@ -11,13 +11,26 @@ var debug_worlds = [
 	{"id": "122423", "name": "World #4", "description": "4", "icon": preload("res://icon.png")}
 ]
 
+var group: ButtonGroup = ButtonGroup.new()
 
 func _ready():
 	ControllerManager.world_browser = self
-	for world in debug_worlds:
-		var world_panel = WORLD_PANEL_SCENE.instance()
-		world_container.add_child(world_panel)
-		world_panel.setup(world["icon"], world["name"], world["description"], world["id"])
+	var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
+	print("WORLDS ", worlds)
+	for world_object in worlds:
+		var file: String = world_object.split("/")[-1]
+		if file.count("_") > 1: continue
+		download_world_data(world_object)
+
+func download_world_data(world_object: String):
+	#var data = yield(WebManager.download_string(world_object),"completed")
+	var file = world_object.split("/")[-1]
+	var file_name = file.split(".")[0]
+	var world_id = file_name.split("_")[0]
+	var world_name = file_name.split("_")[1]
+	var world_panel = WORLD_PANEL_SCENE.instance()
+	world_container.add_child(world_panel)
+	world_panel.setup(preload("res://icon.png"), world_name, "", world_id, world_object, group)
 
 
 func _on_WorldBrowser_popup_hide():

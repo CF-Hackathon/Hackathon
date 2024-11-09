@@ -9,6 +9,11 @@ var response_code: int
 var body: PoolByteArray
 var request_error = OK
 var presigned_url: String
+
+func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
+
+
 func save_world(data):
 	pass
 
@@ -40,8 +45,8 @@ func upload_world(buffer):
 
 
 func download_file(object_name: String, file_path: String):
-	var buffer = yield(download_buffer(object_name), "completed")
-	if buffer.is_empty(): 
+	var buffer: PoolByteArray = yield(download_buffer(object_name), "completed")
+	if buffer.size() == 0: 
 		print("Couldn't download buffer for file download.")
 		return FAILED
 	
@@ -69,7 +74,7 @@ func download_buffer(object_name: String) -> PoolByteArray:
 	
 	if request_error: return PoolByteArray()
 	
-	var dict = JSON.parse_string(body.get_string_from_utf8())
+	var dict = parse_json(body.get_string_from_utf8())
 	
 	# get file from url
 	request = create_request()
@@ -78,6 +83,23 @@ func download_buffer(object_name: String) -> PoolByteArray:
 	yield(request, "request_completed")
 	if request_error: return PoolByteArray()
 	return body
+
+
+func get_files_in_folder(folder_name: String) -> Array:
+	request = create_request()
+	request.request(URL+"?folder_name="+folder_name)
+	yield(request,"request_completed")
+	if request_error:
+		return []
+	else:
+		var result = JSON.parse(body.get_string_from_utf8())
+		if result.error: return []
+		else:
+			var arr: Array
+			for object_data in result.result["objects"]:
+				arr.append(object_data["name"])
+			return arr
+	
 
 func create_request() -> HTTPRequest:
 	request = HTTPRequest.new()
@@ -88,9 +110,10 @@ func create_request() -> HTTPRequest:
 func _on_http_request_completed(result, response_code, headers, body):
 	self.response_code = response_code
 	self.body = body
+	print("AAAAA",body.get_string_from_utf8())
 	var response = parse_json(body.get_string_from_utf8())
-	print(response)
-	print(response_code)
+	#print(response)
+	#print(response_code)
 	if response != null:
 		if response.has("url"):
 			presigned_url = response["url"]

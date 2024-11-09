@@ -3,6 +3,7 @@
 [ext_resource path="res://ui/world_browser/world_browser.gd" type="Script" id=2]
 
 [node name="WorldBrowser" type="WindowDialog"]
+pause_mode = 2
 margin_right = 618.0
 margin_bottom = 353.0
 window_title = "World Browser"
