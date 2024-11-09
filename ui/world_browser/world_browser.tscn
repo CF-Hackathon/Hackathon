@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/world_browser/world_browser.gd" type="Script" id=2]
+
+[node name="WorldBrowser" type="WindowDialog"]
+visible = true
+margin_right = 618.0
+margin_bottom = 353.0
+window_title = "World Browser"
+script = ExtResource( 2 )
+
+[node name="PanelContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_right = 602.0
+margin_bottom = 337.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SearchBarLineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+margin_right = 602.0
+margin_bottom = 24.0
+placeholder_text = "Search..."
+
+[node name="WorldContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 602.0
+margin_bottom = 28.0

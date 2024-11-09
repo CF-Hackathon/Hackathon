@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-onready var telegram_user_id_label: Label = $VBoxContainer/HeaderPanel/HBoxContainer/TelegramUserIDLabel
+onready var telegram_user_id_label: Label = $MainUIContainer/HeaderPanel/HBoxContainer/TelegramUserIDLabel
 
 
 func _ready():
