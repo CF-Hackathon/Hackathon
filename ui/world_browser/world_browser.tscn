@@ -3,7 +3,6 @@
 [ext_resource path="res://ui/world_browser/world_browser.gd" type="Script" id=2]
 
 [node name="WorldBrowser" type="WindowDialog"]
-visible = true
 margin_right = 618.0
 margin_bottom = 353.0
 window_title = "World Browser"
@@ -32,3 +31,5 @@ placeholder_text = "Search..."
 margin_top = 28.0
 margin_right = 602.0
 margin_bottom = 28.0
+
+[connection signal="popup_hide" from="." to="." method="_on_WorldBrowser_popup_hide"]

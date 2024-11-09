@@ -11,6 +11,7 @@ var gravity: float = 10.0
 var movement_speed: float = 5.0
 var jump_height: float = 7.0
 var sensitivity: float = 2.0
+var portal_cooldown: float = 0.0
 
 
 func _ready():
@@ -19,6 +20,7 @@ func _ready():
 
 func _physics_process(delta):
 	if not ControllerManager.mode == ControllerManager.Mode.PLAYER: return
+	portal_cooldown -= delta
 	# process movement
 	var movement_input: Vector2 = ControllerManager.movement_joystick.input
 	var y_velocity: float = velocity.y - gravity*delta
@@ -34,19 +36,30 @@ func _physics_process(delta):
 	camera.rotation.x = clamp(camera.rotation.x, -PI/2.0, PI/2.0)
 	rotation.y -= camera_input.x * sensitivity * delta
 	
-	detect_cell()
+	detect_cell_collisions()
 
 func toggle(toggled: bool):
 	visible = toggled
 	camera.current = toggled
 
 
-func detect_cell():
-	var coll = self.get_last_slide_collision()
-	if coll:
+func detect_cell_collisions():
+	for i in get_slide_count():
+		var coll = get_slide_collision(i)
 		var grid_map: GridMap = coll.collider
+		if grid_map == null: 
+			print("not gridmap")
+			return
+		if coll.normal.y < 0.8:
+			print(coll.normal)
 		var mesh_lib: MeshLibrary = grid_map.mesh_library
-		var cell_id = grid_map.get_cell_item(coll.position.x, coll.position.y-0.5, coll.position.z)
-		var cell_name = mesh_lib.get_item_name(cell_id)
-		print(cell_id)
+		var tp = grid_map.world_to_map(coll.position - coll.normal*0.5)
+		var block_id = grid_map.get_cell_item(tp.x, tp.y, tp.z)
+		if block_id == -1: continue
+		var block_name = mesh_lib.get_item_name(block_id)
+		if block_name == "Portal" and portal_cooldown <= 0:
+			get_tree().paused = true
+			portal_cooldown = 2
+			ControllerManager.world_browser.popup_centered()
+		#print(block_id)
 	#grid_map.mesh_library.get

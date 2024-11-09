@@ -13,8 +13,12 @@ var debug_worlds = [
 
 
 func _ready():
+	ControllerManager.world_browser = self
 	for world in debug_worlds:
 		var world_panel = WORLD_PANEL_SCENE.instance()
 		world_container.add_child(world_panel)
 		world_panel.setup(world["icon"], world["name"], world["description"], world["id"])
-	popup_centered()
+
+
+func _on_WorldBrowser_popup_hide():
+	get_tree().paused = false
