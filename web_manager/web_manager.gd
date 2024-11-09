@@ -12,9 +12,10 @@ var presigned_url: String
 func save_world(data):
 	pass
 
-func upload_world(buffer):
+func upload_world(buffer, world_name: String):
+	var new_object_name: String = str("hackaton_worlds/", JsTelegram.user_id, "_", world_name, ".json")
 	var json_data = {
-		"object_name": "test_hackatong/test.json",
+		"object_name": new_object_name,
 		"content_type": "application/octet-stream"
 	}
 	
@@ -87,6 +88,8 @@ func create_request() -> HTTPRequest:
 
 func _on_http_request_completed(result, response_code, headers, body):
 	self.response_code = response_code
+	if response_code == 200:
+		ControllerManager.ui.saving_label.hide()
 	self.body = body
 	var response = parse_json(body.get_string_from_utf8())
 	print(response)

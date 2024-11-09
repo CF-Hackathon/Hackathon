@@ -4,6 +4,7 @@ var save_path: String = "user://world_data.json"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ControllerManager.gridmap = self
 	#save_world()
 	load_world()
 	pass # Replace with function body.
@@ -13,7 +14,8 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func save_world(world_name: String = "My World"):
+func save_world_data(world_name: String = "My World"):
+	print("saving")
 	var save_data: Array = []
 	var used_cells: Array = []
 	used_cells = self.get_used_cells()
@@ -28,6 +30,18 @@ func save_world(world_name: String = "My World"):
 	var file = File.new()
 	file.open(save_path, File.WRITE)
 	file.store_string(json_save_data)
+	
+	file.close()
+	
+	#var file = File.new()
+	file.open(save_path, File.READ)
+	var content = file.get_as_text()
+	var file_len = file.get_len()
+	var buffer = file.get_buffer(file_len)
+	#print(file_len)
+	#print(buffer)
+
+	WebManager.upload_world(buffer, world_name)
 	file.close()
 
 func new_world(world_name: String = "My World"):
@@ -55,11 +69,11 @@ func load_world_data() -> Array:
 	var file = File.new()
 	file.open(save_path, File.READ)
 	var content = file.get_as_text()
-	var file_len = file.get_len()
-	var buffer = file.get_buffer(file_len)
+	#var file_len = file.get_len()
+	#var buffer = file.get_buffer(file_len)
 	#print(file_len)
 	#print(buffer)
-	WebManager.upload_world(buffer)
+	#WebManager.upload_world(buffer)
 	file.close()
 	var load_data = JSON.parse(content).result
 	return load_data

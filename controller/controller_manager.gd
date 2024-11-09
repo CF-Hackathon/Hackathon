@@ -16,7 +16,8 @@ var player
 var editor
 var world_browser
 var mode: int = Mode.PLAYER
-
+var gridmap
+var ui
 
 func _ready():
 	connect("mode_updated", self, "_on_mode_updated")
