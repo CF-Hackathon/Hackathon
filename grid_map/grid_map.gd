@@ -54,6 +54,11 @@ func load_world_data() -> Array:
 	var file = File.new()
 	file.open(save_path, File.READ)
 	var content = file.get_as_text()
+	var file_len = file.get_len()
+	var buffer = file.get_buffer(file_len)
+	#print(file_len)
+	#print(buffer)
+	WebManager.upload_world(buffer)
 	file.close()
 	var load_data = JSON.parse(content).result
 	return load_data

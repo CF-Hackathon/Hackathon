@@ -45,6 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="cftonhackathon"
+config/description="Version: 0.1"
 run/main_scene="res://scenes/main_scene.tscn"
 config/icon="res://icon.png"
 
@@ -52,6 +53,7 @@ config/icon="res://icon.png"
 
 ControllerManager="*res://controller/controller_manager.gd"
 JsTelegram="*res://js_telegram/js_telegram.gd"
+WebManager="*res://web_manager/web_manager.gd"
 
 [gui]
 
