@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Snow_02_White_1.png-29b4e5f8c8a11658ceb6138ca52562b8.s3tc.stex"
-path.etc="res://.import/Snow_02_White_1.png-29b4e5f8c8a11658ceb6138ca52562b8.etc.stex"
+path="res://.import/Snow_02_White_1.png-29b4e5f8c8a11658ceb6138ca52562b8.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/Snow_02_White_1.png"
-dest_files=[ "res://.import/Snow_02_White_1.png-29b4e5f8c8a11658ceb6138ca52562b8.s3tc.stex", "res://.import/Snow_02_White_1.png-29b4e5f8c8a11658ceb6138ca52562b8.etc.stex" ]
+dest_files=[ "res://.import/Snow_02_White_1.png-29b4e5f8c8a11658ceb6138ca52562b8.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

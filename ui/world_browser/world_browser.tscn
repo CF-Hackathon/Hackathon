@@ -4,6 +4,7 @@
 
 [node name="WorldBrowser" type="Panel"]
 pause_mode = 2
+visible = true
 margin_right = 618.0
 margin_bottom = 353.0
 script = ExtResource( 2 )
