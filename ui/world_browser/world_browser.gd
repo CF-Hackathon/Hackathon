@@ -3,6 +3,7 @@ extends Panel
 
 const WORLD_PANEL_SCENE: PackedScene = preload("res://ui/world_browser/world_panel.tscn")
 
+onready var search_bar: LineEdit = $Control/PanelContainer/VBoxContainer/SearchBarLineEdit
 onready var world_container: VBoxContainer = $Control/PanelContainer/VBoxContainer/WorldContainer
 var debug_worlds = [
 	{"id": "123", "name": "World #1", "description": "The first world.", "icon": preload("res://icon.png")},
@@ -20,12 +21,19 @@ func _ready():
 
 
 func download_worlds():
+	display_message("1")
 	var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
+	display_message("2")
 	#print("WORLDS ", worlds)
 	for world_object in worlds:
+		display_message("3")
 		var file: String = world_object.split("/")[-1]
 		if file.count("_") > 1: continue
+		display_message("4")
 		download_world_data(world_object)
+
+func display_message(text: String):
+	search_bar.text += text
 
 func download_world_data(world_object: String):
 	#var data = yield(WebManager.download_string(world_object),"completed")

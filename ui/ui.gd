@@ -14,7 +14,9 @@ func _ready():
 	ControllerManager.ui = self
 	telegram_user_id_label.text = "User ID: " + JsTelegram.user_id
 	saving_label.hide()
-	world_browser.download_worlds()
+	world_browser.display_message("S")
+	yield(world_browser.download_worlds(),"completed")
+	world_browser.display_message("E")
 	
 func _on_WorldNameLineEdit_text_changed(new_text: String):
 	world_name = new_text
