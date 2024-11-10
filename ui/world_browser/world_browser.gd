@@ -17,6 +17,9 @@ func _ready():
 	get_node("Control/PanelContainer/VBoxContainer/SearchBarLineEdit").modulate = Color.red
 	if is_instance_valid(ControllerManager.ui):
 		ControllerManager.ui.world_browser = self
+
+
+func download_worlds():
 	var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
 	#print("WORLDS ", worlds)
 	for world_object in worlds:
