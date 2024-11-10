@@ -1,5 +1,5 @@
 class_name WorldBrowser
-extends PopupPanel
+extends Panel
 
 
 const WORLD_PANEL_SCENE: PackedScene = preload("res://ui/world_browser/world_panel.tscn")
@@ -38,5 +38,18 @@ func _on_WorldBrowser_popup_hide():
 	get_tree().paused = false
 
 
+
+func popup_centered():
+	show()
+	var v = get_viewport_rect().size
+	rect_global_position = v/2-rect_size/2
+	
+
+
 func _on_CloseButton_pressed():
 	hide()
+
+
+func _on_WorldBrowser_visibility_changed():
+	if not visible:
+		_on_WorldBrowser_popup_hide()

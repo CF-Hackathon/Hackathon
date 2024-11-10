@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui/world_browser/world_browser.gd" type="Script" id=2]
 
-[node name="WorldBrowser" type="PopupPanel"]
+[node name="WorldBrowser" type="Panel"]
 pause_mode = 2
 margin_right = 618.0
 margin_bottom = 353.0
@@ -12,6 +12,10 @@ script = ExtResource( 2 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="Control"]
@@ -57,14 +61,14 @@ margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
 pause_mode = 2
-margin_right = 610.0
-margin_bottom = 345.0
+margin_right = 602.0
+margin_bottom = 337.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SearchBarLineEdit" type="LineEdit" parent="Control/PanelContainer/VBoxContainer"]
 pause_mode = 2
-margin_right = 610.0
+margin_right = 602.0
 margin_bottom = 24.0
 placeholder_text = "Search..."
 caret_blink = true
@@ -73,8 +77,8 @@ caret_blink_speed = 0.5
 [node name="WorldContainer" type="VBoxContainer" parent="Control/PanelContainer/VBoxContainer"]
 pause_mode = 2
 margin_top = 28.0
-margin_right = 610.0
+margin_right = 602.0
 margin_bottom = 28.0
 
-[connection signal="popup_hide" from="." to="." method="_on_WorldBrowser_popup_hide"]
+[connection signal="visibility_changed" from="." to="." method="_on_WorldBrowser_visibility_changed"]
 [connection signal="pressed" from="Control/Panel/CloseButton" to="." method="_on_CloseButton_pressed"]

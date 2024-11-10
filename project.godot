@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://controller/player/player.gd"
+}, {
+"base": "Panel",
+"class": "WorldBrowser",
+"language": "GDScript",
+"path": "res://ui/world_browser/world_browser.gd"
 } ]
 _global_script_class_icons={
 "BlockListPanel": "",
 "BlockPlacement": "",
 "Editor": "",
 "Joystick": "",
-"Player": ""
+"Player": "",
+"WorldBrowser": ""
 }
 
 [application]
