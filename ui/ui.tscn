@@ -3,7 +3,7 @@
 [ext_resource path="res://controller/ui/controller_ui.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/block_list/block_list_panel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/ui.gd" type="Script" id=3]
-[ext_resource path="res://ui/world_browser/world_browser.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/world_browser/world_browser.gd" type="Script" id=4]
 [ext_resource path="res://assets/mesh_lib_07.meshlib" type="MeshLibrary" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -57,7 +57,7 @@ margin_left = 87.0
 margin_top = 8.0
 margin_right = 171.0
 margin_bottom = 22.0
-text = "Version: 0.14"
+text = "Version: 0.15"
 
 [node name="WorldNameLineEdit" type="LineEdit" parent="MainUIContainer/HeaderPanel/HBoxContainer"]
 margin_left = 175.0
@@ -105,15 +105,85 @@ margin_right = 1024.0
 margin_bottom = 570.0
 mesh_library = ExtResource( 5 )
 
-[node name="WorldBrowser" parent="." instance=ExtResource( 4 )]
+[node name="WorldBrowser" type="Panel" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Control" type="Control" parent="WorldBrowser"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="WorldBrowser/Control"]
+pause_mode = 2
+anchor_right = 1.0
+margin_top = -24.0
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="WorldBrowser/Control/Panel"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -21.0
+margin_right = 8.0
+margin_bottom = 20.0
+text = "X"
+flat = true
+
+[node name="Label" type="Label" parent="WorldBrowser/Control/Panel"]
+pause_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -122.0
-margin_top = -51.0
-margin_right = 122.0
-margin_bottom = 51.0
+margin_left = -45.0
+margin_top = -6.5
+margin_right = 49.0
+margin_bottom = 7.5
+text = "World Browser"
+align = 1
+
+[node name="PanelContainer" type="ScrollContainer" parent="WorldBrowser/Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_clip_content = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WorldBrowser/Control/PanelContainer"]
+pause_mode = 2
+margin_right = 1008.0
+margin_bottom = 584.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SearchBarLineEdit" type="LineEdit" parent="WorldBrowser/Control/PanelContainer/VBoxContainer"]
+pause_mode = 2
+margin_right = 1008.0
+margin_bottom = 24.0
+placeholder_text = "Search..."
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="WorldContainer" type="VBoxContainer" parent="WorldBrowser/Control/PanelContainer/VBoxContainer"]
+pause_mode = 2
+margin_top = 28.0
+margin_right = 1008.0
+margin_bottom = 28.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 visible = false
@@ -128,3 +198,5 @@ value = 16.79
 [connection signal="pressed" from="MainUIContainer/HeaderPanel/HBoxContainer/SaveWorldButton" to="." method="_on_SaveWorldButton_pressed"]
 [connection signal="text_changed" from="MainUIContainer/HeaderPanel/HBoxContainer/WorldNameLineEdit" to="." method="_on_WorldNameLineEdit_text_changed"]
 [connection signal="text_entered" from="MainUIContainer/HeaderPanel/HBoxContainer/WorldNameLineEdit" to="." method="_on_WorldNameLineEdit_text_entered"]
+[connection signal="visibility_changed" from="WorldBrowser" to="WorldBrowser" method="_on_WorldBrowser_visibility_changed"]
+[connection signal="pressed" from="WorldBrowser/Control/Panel/CloseButton" to="WorldBrowser" method="_on_CloseButton_pressed"]

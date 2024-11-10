@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/mesh_lib_07.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://grid_map/grid_map.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/ui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://controller/editor/editor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/textures/Purple_Nebula_07-1024x1024.png" type="Texture" id=7]
+[ext_resource path="res://ui/world_browser/world_browser.gd" type="Script" id=8]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 7 )
@@ -47,3 +48,92 @@ environment = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 0.767848, 0.640633, 0, -0.640633, 0.767848, 0, 7.3096, 0 )
 shadow_enabled = true
 shadow_color = Color( 0.458824, 0.458824, 0.458824, 1 )
+
+[node name="WorldBrowser" type="Panel" parent="."]
+pause_mode = 2
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -278.0
+margin_top = -138.0
+margin_right = 278.0
+margin_bottom = 138.0
+script = ExtResource( 8 )
+
+[node name="Control" type="Control" parent="WorldBrowser"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="WorldBrowser/Control"]
+pause_mode = 2
+anchor_right = 1.0
+margin_top = -24.0
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="WorldBrowser/Control/Panel"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -21.0
+margin_right = 8.0
+margin_bottom = 20.0
+text = "X"
+flat = true
+
+[node name="Label" type="Label" parent="WorldBrowser/Control/Panel"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -45.0
+margin_top = -6.5
+margin_right = 49.0
+margin_bottom = 7.5
+text = "World Browser"
+align = 1
+
+[node name="PanelContainer" type="ScrollContainer" parent="WorldBrowser/Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_clip_content = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WorldBrowser/Control/PanelContainer"]
+pause_mode = 2
+margin_right = 540.0
+margin_bottom = 260.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SearchBarLineEdit" type="LineEdit" parent="WorldBrowser/Control/PanelContainer/VBoxContainer"]
+pause_mode = 2
+margin_right = 540.0
+margin_bottom = 24.0
+placeholder_text = "Search..."
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="WorldContainer" type="VBoxContainer" parent="WorldBrowser/Control/PanelContainer/VBoxContainer"]
+pause_mode = 2
+margin_top = 28.0
+margin_right = 540.0
+margin_bottom = 28.0
+
+[connection signal="visibility_changed" from="WorldBrowser" to="WorldBrowser" method="_on_WorldBrowser_visibility_changed"]
+[connection signal="pressed" from="WorldBrowser/Control/Panel/CloseButton" to="WorldBrowser" method="_on_CloseButton_pressed"]
