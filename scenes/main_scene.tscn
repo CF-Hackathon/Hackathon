@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/mesh_lib_05.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://grid_map/grid_map.gd" type="Script" id=2]
@@ -6,6 +6,16 @@
 [ext_resource path="res://controller/player/player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/ui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://controller/editor/editor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/textures/Purple_Nebula_07-1024x1024.png" type="Texture" id=7]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 7 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+ambient_light_sky_contribution = 0.4
 
 [node name="MainScene" type="Spatial"]
 
@@ -29,3 +39,11 @@ transform = Transform( 1, 0, 0, 0, 0.907484, 0.420086, 0, -0.420086, 0.907484, 0
 [node name="BlockPlacement" parent="." instance=ExtResource( 3 )]
 
 [node name="UI" parent="." instance=ExtResource( 5 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.767848, 0.640633, 0, -0.640633, 0.767848, 0, 7.3096, 0 )
+shadow_enabled = true
+shadow_color = Color( 0.458824, 0.458824, 0.458824, 1 )
