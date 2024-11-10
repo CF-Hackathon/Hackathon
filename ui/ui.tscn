@@ -106,7 +106,6 @@ margin_bottom = 570.0
 mesh_library = ExtResource( 5 )
 
 [node name="WorldBrowser" parent="." instance=ExtResource( 4 )]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

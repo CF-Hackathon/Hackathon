@@ -78,7 +78,8 @@ func detect_cell_collisions():
 				if portal_cooldown <= 0:
 					#get_tree().paused = true
 					portal_cooldown = 2
-					#ControllerManager.world_browser.popup_centered()
+					if is_instance_valid(ControllerManager.world_browser):
+						ControllerManager.world_browser._popup_centered()
 					
 
 func add_health(amount: float):

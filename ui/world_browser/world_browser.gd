@@ -39,8 +39,9 @@ func _on_WorldBrowser_popup_hide():
 
 
 
-func popup_centered():
-	self.visible = true
+func _popup_centered():
+	#self.visible = true
+	self.show()
 	#show()
 	#var v = get_viewport_rect().size
 	#rect_global_position = v/2-rect_size/2
