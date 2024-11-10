@@ -1,7 +1,7 @@
 class_name Player
 extends KinematicBody
 
-enum CellNames {GRASS, DIRT, LAVA, GLASS, ICE, PORTAL}
+enum CellNames {GRASS, DIRT, LAVA, GLASS, ICE, COBBLE_STONE, PORTAL}
 
 onready var camera: Camera = $Camera
 

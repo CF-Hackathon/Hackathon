@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/256_Dirt Pebbles 01.png-d9b552ffb0373dbf54d8760bf820d03e.s3tc.stex"
-path.etc="res://.import/256_Dirt Pebbles 01.png-d9b552ffb0373dbf54d8760bf820d03e.etc.stex"
+path="res://.import/256_Dirt Pebbles 01.png-d9b552ffb0373dbf54d8760bf820d03e.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/256_Dirt Pebbles 01.png"
-dest_files=[ "res://.import/256_Dirt Pebbles 01.png-d9b552ffb0373dbf54d8760bf820d03e.s3tc.stex", "res://.import/256_Dirt Pebbles 01.png-d9b552ffb0373dbf54d8760bf820d03e.etc.stex" ]
+dest_files=[ "res://.import/256_Dirt Pebbles 01.png-d9b552ffb0373dbf54d8760bf820d03e.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

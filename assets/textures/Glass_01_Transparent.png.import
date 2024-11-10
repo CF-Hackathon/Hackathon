@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Glass_01_Transparent.png-2840230168a07edde2b59bef2d9b567d.s3tc.stex"
-path.etc="res://.import/Glass_01_Transparent.png-2840230168a07edde2b59bef2d9b567d.etc.stex"
+path="res://.import/Glass_01_Transparent.png-2840230168a07edde2b59bef2d9b567d.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/Glass_01_Transparent.png"
-dest_files=[ "res://.import/Glass_01_Transparent.png-2840230168a07edde2b59bef2d9b567d.s3tc.stex", "res://.import/Glass_01_Transparent.png-2840230168a07edde2b59bef2d9b567d.etc.stex" ]
+dest_files=[ "res://.import/Glass_01_Transparent.png-2840230168a07edde2b59bef2d9b567d.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

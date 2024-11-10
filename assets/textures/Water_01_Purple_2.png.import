@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Water_01_Purple_2.png-8ec57219c658c835c3243e46070e9d49.s3tc.stex"
-path.etc="res://.import/Water_01_Purple_2.png-8ec57219c658c835c3243e46070e9d49.etc.stex"
+path="res://.import/Water_01_Purple_2.png-8ec57219c658c835c3243e46070e9d49.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/textures/Water_01_Purple_2.png"
-dest_files=[ "res://.import/Water_01_Purple_2.png-8ec57219c658c835c3243e46070e9d49.s3tc.stex", "res://.import/Water_01_Purple_2.png-8ec57219c658c835c3243e46070e9d49.etc.stex" ]
+dest_files=[ "res://.import/Water_01_Purple_2.png-8ec57219c658c835c3243e46070e9d49.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

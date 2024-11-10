@@ -14,7 +14,7 @@ dest_files=[ "res://.import/256_Grass 02 Blades.png-6b034360573e34a9fcbb8e691ad4
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
