@@ -6,7 +6,7 @@ var path_to_load: String = SAVE_PATH
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
-	get_tree().paused = true
+	#get_tree().paused = true
 	ControllerManager.gridmap = self
 	#save_world()
 	load_world()

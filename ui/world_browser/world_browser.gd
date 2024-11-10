@@ -1,4 +1,3 @@
-class_name WorldBrowser
 extends Panel
 
 
@@ -15,6 +14,7 @@ var debug_worlds = [
 var group: ButtonGroup = ButtonGroup.new()
 
 func _ready():
+	get_node("Control/PanelContainer/VBoxContainer/SearchBarLineEdit").modulate = Color.red
 	ControllerManager.world_browser = self
 	var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
 	#print("WORLDS ", worlds)
