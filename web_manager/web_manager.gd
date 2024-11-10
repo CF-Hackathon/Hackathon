@@ -37,7 +37,7 @@ func upload_world(buffer, world_name: String):
 		#var buffer = data.get_buffer(data_len)
 		#print(buffer)
 		#json_save_data.
-		print("saving")
+		#print("saving")
 		var headers = ["Content-Type: application/octet-stream"]
 		request.request_raw(presigned_url, headers, true, HTTPClient.METHOD_PUT, buffer)
 		#request.request(URL, [], HTTPClient.METHOD_PUT, json_save_data)
@@ -48,7 +48,7 @@ func upload_world(buffer, world_name: String):
 func download_file(object_name: String, file_path: String):
 	var buffer: PoolByteArray = yield(download_buffer(object_name), "completed")
 	if buffer.size() == 0: 
-		print("Couldn't download buffer for file download.")
+		#print("Couldn't download buffer for file download.")
 		return FAILED
 	
 	
@@ -56,11 +56,11 @@ func download_file(object_name: String, file_path: String):
 	var file = File.new()
 	var error = file.open(file_path, File.WRITE)
 	if error: 
-		print("opening file "+ file_path + " failed: ")
+		#t("opening file "+ file_path + " failed: ")
 		return error
 	file.store_buffer(buffer)
 	file.close()
-	print("downloaded file to " + file_path)
+	#print("downloaded file to " + file_path)
 	return OK
 
 func download_buffer(object_name: String) -> PoolByteArray:
@@ -68,7 +68,7 @@ func download_buffer(object_name: String) -> PoolByteArray:
 	var path = str(URL + "?folder_name=" + object_name)
 	
 	request = create_request()
-	print("full path: ", str(URL + "?object_name=" + object_name))
+	#print("full path: ", str(URL + "?object_name=" + object_name))
 	request.request(URL + "?object_name=" + object_name)
 	
 	yield(request, "request_completed")
@@ -113,7 +113,7 @@ func _on_http_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		ControllerManager.ui.saving_label.hide()
 	self.body = body
-	print("AAAAA",body.get_string_from_utf8())
+	#print("AAAAA",body.get_string_from_utf8())
 	var response = parse_json(body.get_string_from_utf8())
 	#print(response)
 	#print(response_code)

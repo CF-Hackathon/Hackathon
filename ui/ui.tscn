@@ -4,7 +4,7 @@
 [ext_resource path="res://ui/block_list/block_list_panel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/ui.gd" type="Script" id=3]
 [ext_resource path="res://ui/world_browser/world_browser.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/mesh_lib_06.meshlib" type="MeshLibrary" id=5]
+[ext_resource path="res://assets/mesh_lib_07.meshlib" type="MeshLibrary" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0196078, 1, 0, 1 )
@@ -57,7 +57,7 @@ margin_left = 87.0
 margin_top = 8.0
 margin_right = 171.0
 margin_bottom = 22.0
-text = "Version: 0.13"
+text = "Version: 0.14"
 
 [node name="WorldNameLineEdit" type="LineEdit" parent="MainUIContainer/HeaderPanel/HBoxContainer"]
 margin_left = 175.0
@@ -106,12 +106,15 @@ margin_bottom = 570.0
 mesh_library = ExtResource( 5 )
 
 [node name="WorldBrowser" parent="." instance=ExtResource( 4 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 209.0
-margin_top = 143.0
-margin_right = -209.0
-margin_bottom = -143.0
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -122.0
+margin_top = -51.0
+margin_right = 122.0
+margin_bottom = 51.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 visible = false

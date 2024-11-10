@@ -39,7 +39,7 @@ func _process(delta):
 
 
 func _on_mode_updated():
-	print(mode)
+	#print(mode)
 	if mode == Mode.PLAYER:
 		player.toggle(true)
 		editor.toggle(false)

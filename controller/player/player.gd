@@ -53,10 +53,11 @@ func detect_cell_collisions():
 		var coll = get_slide_collision(i)
 		var grid_map: GridMap = coll.collider
 		if grid_map == null: 
-			print("not gridmap")
+			#print("not gridmap")
 			return
 		if coll.normal.y < 0.8:
-			print(coll.normal)
+			#print(coll.normal)
+			pass
 		var mesh_lib: MeshLibrary = grid_map.mesh_library
 		var tp = grid_map.world_to_map(coll.position - coll.normal*0.5)
 		var block_id = grid_map.get_cell_item(tp.x, tp.y, tp.z)
@@ -75,9 +76,9 @@ func detect_cell_collisions():
 				self.movement_speed = default_movement_speed + 2.0
 			CellNames.PORTAL:
 				if portal_cooldown <= 0:
-					get_tree().paused = true
+					#get_tree().paused = true
 					portal_cooldown = 2
-					ControllerManager.world_browser.popup_centered()
+					#ControllerManager.world_browser.popup_centered()
 					
 
 func add_health(amount: float):

@@ -75,7 +75,7 @@ func new_world(world_name: String = "My World"):
 	file.close()
 
 	
-	print(save_data)
+	#print(save_data)
 	
 	pass
 

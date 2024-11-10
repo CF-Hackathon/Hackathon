@@ -17,7 +17,7 @@ var group: ButtonGroup = ButtonGroup.new()
 func _ready():
 	ControllerManager.world_browser = self
 	var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
-	print("WORLDS ", worlds)
+	#print("WORLDS ", worlds)
 	for world_object in worlds:
 		var file: String = world_object.split("/")[-1]
 		if file.count("_") > 1: continue
@@ -40,9 +40,10 @@ func _on_WorldBrowser_popup_hide():
 
 
 func popup_centered():
-	show()
-	var v = get_viewport_rect().size
-	rect_global_position = v/2-rect_size/2
+	self.visible = true
+	#show()
+	#var v = get_viewport_rect().size
+	#rect_global_position = v/2-rect_size/2
 	
 
 

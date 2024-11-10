@@ -16,11 +16,12 @@ func telegram_user_data(args):
 	var user_data: Dictionary
 	if user_raw_data is Array:
 		user_data = user_raw_data[0]
-		print(user_data)
+		#print(user_data)
 	
 	if user_data is Dictionary:
 		user_id = user_data["id"]
 		user_first_name = user_data["first_name"]
 		username = user_data["username"]
 	else:
-		print("Greška u parsiranju JSON-a:", user_data)
+		#print("Greška u parsiranju JSON-a:", user_data)
+		pass

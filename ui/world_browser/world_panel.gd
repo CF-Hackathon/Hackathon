@@ -36,9 +36,9 @@ func _on_JoinButton_pressed():
 	
 
 func join_world():
-	print("DOWNLOADING")
+	#print("DOWNLOADING")
 	yield(WebManager.download_file(world_object, "user://"+file), "completed")
-	print("DOWNLOADED")
+	#print("DOWNLOADED")
 	get_tree().current_scene.get_node("GridMap").load_world_file("user://"+file)
 	var w: Panel = ControllerManager.ui.world_browser
 	w.hide()
