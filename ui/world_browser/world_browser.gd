@@ -1,9 +1,10 @@
-extends WindowDialog
+class_name WorldBrowser
+extends PopupPanel
 
 
 const WORLD_PANEL_SCENE: PackedScene = preload("res://ui/world_browser/world_panel.tscn")
 
-onready var world_container: VBoxContainer = $PanelContainer/VBoxContainer/WorldContainer
+onready var world_container: VBoxContainer = $Control/PanelContainer/VBoxContainer/WorldContainer
 var debug_worlds = [
 	{"id": "123", "name": "World #1", "description": "The first world.", "icon": preload("res://icon.png")},
 	{"id": "12313", "name": "Drugi svet", "description": "The drugi world.", "icon": preload("res://icon.png")},
@@ -35,3 +36,7 @@ func download_world_data(world_object: String):
 
 func _on_WorldBrowser_popup_hide():
 	get_tree().paused = false
+
+
+func _on_CloseButton_pressed():
+	hide()

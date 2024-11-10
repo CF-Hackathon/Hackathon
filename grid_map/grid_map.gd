@@ -93,6 +93,8 @@ func load_world_data() -> Array:
 	return load_data
 
 func load_world():
+	if is_instance_valid(ControllerManager.player):
+		ControllerManager.player.global_position = Vector3(0, 2.231, 0)
 	self.clear()
 	var file = File.new()
 	if not file.file_exists(path_to_load):
