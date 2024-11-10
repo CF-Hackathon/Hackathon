@@ -15,7 +15,8 @@ var group: ButtonGroup = ButtonGroup.new()
 
 func _ready():
 	get_node("Control/PanelContainer/VBoxContainer/SearchBarLineEdit").modulate = Color.red
-	ControllerManager.world_browser = self
+	if is_instance_valid(ControllerManager.ui):
+		ControllerManager.ui.world_browser = self
 	var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
 	#print("WORLDS ", worlds)
 	for world_object in worlds:

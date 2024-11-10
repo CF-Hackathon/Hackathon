@@ -14,9 +14,7 @@ var jump_height: float = 5.0
 var sensitivity: float = 2.0
 var portal_cooldown: float = 0.0
 var health: float = 100.0
-var world_browser
 func _ready():
-	world_browser = get_parent().get_node("WorldBrowser2")
 	ControllerManager.player = self
 	
 
@@ -79,11 +77,11 @@ func detect_cell_collisions():
 				if portal_cooldown <= 0:
 					#get_tree().paused = true
 					portal_cooldown = 2
-					if is_instance_valid(world_browser):
-						#world_browser._popup_centered()
-						world_browser.visible = true
-					else:
-						jump()
+#					if is_instance_valid(ControllerManager.ui.world_browser):
+#						#world_browser._popup_centered()
+#						ControllerManager.ui.world_browser.visible = true
+#					else:
+#						jump()
 					
 					
 
