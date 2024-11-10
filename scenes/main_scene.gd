@@ -10,11 +10,6 @@ var group: ButtonGroup = ButtonGroup.new()
 func _ready():
 	ControllerManager.ui.world_browser2 = world_browser
 	ControllerManager.world_browser = world_browser
-	var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
-	for world_object in worlds:
-		var file: String = world_object.split("/")[-1]
-		if file.count("_") > 1: continue
-		download_world_data(world_object)
 
 func download_world_data(world_object: String):
 	#var data = yield(WebManager.download_string(world_object),"completed")
@@ -48,6 +43,14 @@ func _on_CloseButton_pressed():
 func _on_WorldBrowser_visibility_changed():
 	if not world_browser.visible:
 		_on_WorldBrowser_popup_hide()
+	else:
+		var worlds = yield(WebManager.get_files_in_folder("hackaton_worlds"), "completed")
+		for child in world_container.get_children():
+			child.queue_free()			
+		for world_object in worlds:
+			var file: String = world_object.split("/")[-1]
+			if file.count("_") > 1: continue
+			download_world_data(world_object)
 
 
 func _on_Button_pressed():
