@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/mesh_lib_07.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://grid_map/grid_map.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/ui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://controller/editor/editor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/textures/Purple_Nebula_07-1024x1024.png" type="Texture" id=7]
+[ext_resource path="res://scenes/world_browser2.gd" type="Script" id=8]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 7 )
@@ -47,3 +48,31 @@ environment = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 0.767848, 0.640633, 0, -0.640633, 0.767848, 0, 7.3096, 0 )
 shadow_enabled = true
 shadow_color = Color( 0.458824, 0.458824, 0.458824, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WorldBrowser2" type="Panel" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 184.0
+margin_top = 138.0
+margin_right = -184.0
+margin_bottom = -138.0
+script = ExtResource( 8 )
+
+[node name="WorldContainer" type="VBoxContainer" parent="CanvasLayer/WorldBrowser2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_top = 46.0
+margin_right = -23.0
+margin_bottom = -18.0
+
+[node name="Button" type="Button" parent="CanvasLayer/WorldBrowser2"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -44.0
+margin_bottom = 42.0
+text = "X"
+
+[connection signal="pressed" from="CanvasLayer/WorldBrowser2/Button" to="CanvasLayer/WorldBrowser2" method="_on_Button_pressed"]

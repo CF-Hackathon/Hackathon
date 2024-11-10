@@ -6,6 +6,7 @@ var world_name: String = "MyWorld"
 onready var saving_label: Label = $MainUIContainer/HBoxContainer/ControllerUI/SavingLabel
 onready var blocks_panel: Panel = $MainUIContainer/HBoxContainer/BlockListPanel
 onready var world_browser: Panel = $WorldBrowser
+var world_browser2
 
 func _ready():
 	ControllerManager.ui = self
@@ -27,3 +28,8 @@ func display_ui(owner_id):
 func _on_SaveWorldButton_pressed():
 	saving_label.show()
 	ControllerManager.gridmap.save_world_data(world_name)
+
+
+func _on_ResetPositionButton_pressed():
+	if is_instance_valid(ControllerManager.player):
+		ControllerManager.player.global_position = Vector3(0,2.231,0) 

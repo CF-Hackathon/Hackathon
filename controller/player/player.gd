@@ -81,6 +81,7 @@ func detect_cell_collisions():
 					if is_instance_valid(ControllerManager.world_browser):
 						ControllerManager.world_browser._popup_centered()
 					
+					
 
 func add_health(amount: float):
 	self.health += amount
