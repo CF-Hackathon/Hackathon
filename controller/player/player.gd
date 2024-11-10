@@ -16,7 +16,7 @@ var portal_cooldown: float = 0.0
 var health: float = 100.0
 var world_browser
 func _ready():
-	world_browser = get_parent().get_node("CanvasLayer/WorldBrowser2")
+	world_browser = get_parent().get_node("WorldBrowser2")
 	ControllerManager.player = self
 	
 
