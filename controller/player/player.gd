@@ -10,7 +10,7 @@ var velocity: Vector3
 var gravity: float = 10.0
 var default_movement_speed: float = 5.0
 var movement_speed: float = 5.0
-var jump_height: float = 7.0
+var jump_height: float = 5.0
 var sensitivity: float = 2.0
 var portal_cooldown: float = 0.0
 var health: float = 100.0
@@ -42,6 +42,10 @@ func _physics_process(delta):
 func toggle(toggled: bool):
 	visible = toggled
 	camera.current = toggled
+
+
+func jump():
+	velocity.y += jump_height
 
 
 func detect_cell_collisions():
