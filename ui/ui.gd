@@ -5,7 +5,7 @@ onready var telegram_user_id_label: Label = $MainUIContainer/HeaderPanel/HBoxCon
 var world_name: String = "MyWorld"
 onready var saving_label: Label = $MainUIContainer/HBoxContainer/ControllerUI/SavingLabel
 onready var blocks_panel: Panel = $MainUIContainer/HBoxContainer/BlockListPanel
-onready var world_browser: Panel = $WorldBrowser
+
 var world_browser2
 
 func _ready():

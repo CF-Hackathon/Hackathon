@@ -7,7 +7,7 @@
 [ext_resource path="res://ui/ui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://controller/editor/editor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/textures/Purple_Nebula_07-1024x1024.png" type="Texture" id=7]
-[ext_resource path="res://scenes/world_browser2.gd" type="Script" id=8]
+[ext_resource path="res://scenes/main_scene.gd" type="Script" id=8]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 7 )
@@ -19,6 +19,7 @@ ambient_light_color = Color( 0.717647, 0.717647, 0.717647, 1 )
 ambient_light_sky_contribution = 0.4
 
 [node name="MainScene" type="Spatial"]
+script = ExtResource( 8 )
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 1 )
@@ -49,18 +50,16 @@ transform = Transform( 1, 0, 0, 0, 0.767848, 0.640633, 0, -0.640633, 0.767848, 0
 shadow_enabled = true
 shadow_color = Color( 0.458824, 0.458824, 0.458824, 1 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="WorldBrowser2" type="Panel" parent="CanvasLayer"]
+[node name="WorldBrowser2" type="Panel" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 184.0
 margin_top = 138.0
 margin_right = -184.0
 margin_bottom = -138.0
-script = ExtResource( 8 )
 
-[node name="WorldContainer" type="VBoxContainer" parent="CanvasLayer/WorldBrowser2"]
+[node name="WorldContainer" type="VBoxContainer" parent="WorldBrowser2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 23.0
@@ -68,11 +67,12 @@ margin_top = 46.0
 margin_right = -23.0
 margin_bottom = -18.0
 
-[node name="Button" type="Button" parent="CanvasLayer/WorldBrowser2"]
+[node name="Button" type="Button" parent="WorldBrowser2"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -44.0
 margin_bottom = 42.0
 text = "X"
 
-[connection signal="pressed" from="CanvasLayer/WorldBrowser2/Button" to="CanvasLayer/WorldBrowser2" method="_on_Button_pressed"]
+[connection signal="visibility_changed" from="WorldBrowser2" to="." method="_on_WorldBrowser_visibility_changed"]
+[connection signal="pressed" from="WorldBrowser2/Button" to="." method="_on_Button_pressed"]
