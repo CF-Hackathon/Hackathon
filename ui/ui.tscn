@@ -56,7 +56,7 @@ margin_left = 87.0
 margin_top = 8.0
 margin_right = 171.0
 margin_bottom = 22.0
-text = "Version: 0.11"
+text = "Version: 0.13"
 
 [node name="WorldNameLineEdit" type="LineEdit" parent="MainUIContainer/HeaderPanel/HBoxContainer"]
 margin_left = 175.0
@@ -104,6 +104,13 @@ margin_right = 1024.0
 margin_bottom = 570.0
 
 [node name="WorldBrowser" parent="." instance=ExtResource( 4 )]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 209.0
+margin_top = 143.0
+margin_right = -209.0
+margin_bottom = -143.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 visible = false
