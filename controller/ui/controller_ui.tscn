@@ -29,3 +29,14 @@ margin_top = -148.0
 margin_right = -148.0
 margin_bottom = -148.0
 rect_scale = Vector2( 0.3, 0.3 )
+
+[node name="JumpButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -316.0
+margin_top = -288.0
+margin_right = -221.0
+margin_bottom = -207.0
+text = "Jump"
